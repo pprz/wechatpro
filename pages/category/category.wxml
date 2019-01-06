@@ -1,0 +1,23 @@
+<!--pages/category/category.wxml-->
+<import src="../tpls/category/category-tpl.wxml" />
+<import src="../tpls/vocation/vocation-tpl.wxml" />
+<view class="container category-container">
+  <view class='category-box'>
+    <view class="left-box">
+      <block wx:for="{{categoryTypeArr}}" wx:for-index="index">
+        <view class="menu-item {{currentMenuIndex==index?'selected':null}}" data-id="{{item.id}}" data-index="{{index}}" bindtap="changeCategory">
+          {{item.name}}
+        </view>
+      </block>
+    </view>
+    <view class="right-box">
+      <view class="signinBox">
+        <template is="{{currentMenuIndex==0?'signinDetail':null}}" data="{{selectedRegion,imgInfo}}"></template>
+        <view wx:if="{{isStaff==true}}">
+          <template is="{{currentMenuIndex==1?'vocation-tpl':null}}" data="{{startDate,endDate}}"></template>
+        </view>
+
+      </view>
+    </view>
+  </view>
+</view>

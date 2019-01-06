@@ -1,0 +1,67 @@
+<!--pages/my/my.wxml-->
+<view class='container my-container'>
+  <block wx:if="{{role>=20}}">
+    <view class='my-box'>
+      <block wx:for="{{vocations}}">
+        <view class="my-item">
+          <view class="my-item-main" data-id="{{item.id}}" data-index="{{index}}">
+            <view class="my-item-checkbox" ontap="toggleSelect" data-id="{{item.id}}" data-status="{{item.selectStatus}}">
+              <image wx:if="{{item.selectStatus}}" src="../../imgs/icon/circle@selected.png"></image>
+              <image wx:else src="../../imgs/icon/circle@noselected.png"></image>
+            </view>
+            <view class="my-item-word">
+              <view class="title-box">
+                <text>{{item.name}}</text>
+                <text class="title">{{item.update_time}}至{{item.delete_time}}</text>
+                 <text>{{item.section}}</text>
+                <text>{{item.reason}}</text>
+                <text>{{item.asignee==null?'':item.asignee}}</text>
+              </view>
+              <view class="bottom-box">
+                <view class="my-item-counts">
+                </view>
+                <view class="delete" data-id="{{item.id}}" bindtap="delete">销假</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+  </block>
+
+
+    <block wx:if="{{role==24}}">
+    审核请假：
+    <view class='my-box'>
+      <block wx:for="{{vocations}}">
+        <view class="my-item">
+          <view class="my-item-main" data-id="{{item.id}}" data-index="{{index}}">
+            <view class="my-item-checkbox" ontap="toggleSelect" data-id="{{item.id}}" data-status="{{item.selectStatus}}">
+              <image wx:if="{{item.selectStatus}}" src="../../imgs/icon/circle@selected.png"></image>
+              <image wx:else src="../../imgs/icon/circle@noselected.png"></image>
+            </view>
+            <view class="my-item-word">
+              <view class="title-box">
+                <text>{{item.name}}</text>
+                <text class="title">{{item.update_time}}至{{item.delete_time}}</text>
+                 <text>{{item.section}}</text>
+                <text>{{item.reason}}</text>
+                <text>{{item.asignee==null?'':item.asignee}}</text>
+              </view>
+              <view class="bottom-box">
+                <view class="my-item-counts">
+                </view>
+                <view class="delete" data-id="{{item.id}}" bindtap="asignVocation">批准</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+  </block>
+
+
+
+</view>

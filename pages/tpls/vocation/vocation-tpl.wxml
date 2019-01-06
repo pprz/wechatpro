@@ -1,0 +1,40 @@
+<template name="vocation-tpl">
+  <form bindsubmit="vocationFormSubmit">
+    <view class="section">
+      <input name="name" auto-focus placeholder="姓名：" />
+    </view>
+
+    <view class="section">
+      <input type="number" name="mobile" placeholder="手机号码：" />
+    </view>
+
+    <view class="section">
+      <input name="section" placeholder="部门：" />
+    </view>
+
+    <view class="section">
+      <textarea name="reason" placeholder="请假事由："></textarea>
+    </view>
+
+    <view class="section">
+      <picker mode="date" start="2019-01-01" end="2099-12-31" bindchange="bindStartDateChange">
+        <input name="startDate" disabled='true' value="{{startDate}}" placeholder="请假开始时间："></input>
+      </picker>
+    </view>
+
+    <view class="section">
+      <picker mode="date" start="2019-01-01" end="2099-12-31" bindchange="bindEndDateChange">
+        <input name="endDate" disabled='true' value="{{endDate}}" placeholder="请假开始时间："></input>
+      </picker>
+    </view>
+
+        <view class="section">
+      <input name="days" placeholder="请假天数：" />
+    </view>
+
+
+
+    <button class="submit-btn" formType="submit">保存</button>
+    <button class="submit-btn" form-type="reset">重置</button>
+  </form>
+</template>

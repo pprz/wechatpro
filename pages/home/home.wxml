@@ -1,0 +1,66 @@
+<!--pages/home/home.wxml-->
+<import src="../tpls/articles/articles-tpl.wxml"/>
+<view class="container">
+
+  <!-- 首页轮播图 -->
+  <swiper indicator-dots='true' autoplay='true' class='swiper'>
+    <block wx:for="{{bannerArr}}">
+      <swiper-item class="banner-item" data-id="{{item.key_word}}" bindtap="onArticlesItemTap">
+        <!-- aspectFill调整图片尺寸 -->
+        <image mode="aspectFill"  class="item-image" src="{{item.img.url}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 导航条
+  <view class="nav-container">
+    <view class="nav-item-container">
+      <view>
+        <view class="moto-container" bindtap="onTap">
+          <text class="moto">应征指南</text>
+        </view>
+      </view>
+      <view>
+        <view class="moto-container" bindtap="onTap">
+          <text class="moto">强军风采</text>
+        </view>
+      </view>
+    </view>
+    <view class="nav-item-container">
+      <view>
+        <view class="moto-container" bindtap="onTap">
+          <text class="moto">便民服务</text>
+        </view>
+      </view>
+      <view>
+        <view class="moto-container" bindtap="onTap">
+          <text class="moto">关于我们</text>
+        </view>
+      </view>
+    </view>
+  </view> -->
+
+
+  <!-- 专题与最新文章 -->
+  <view class='home-main'>
+    <view class='home-main-theme'>
+      <view class='home-main-header'>专题</view>
+      <view class='theme-box'>
+        <block wx:for="{{themeArr}}">
+          <view wx:if="{{index==2}}" class="theme-item big" bindtap="onThemesItemTap" data-id="{{item.id}}"  data-name="{{item.name}}" data-name="{{item.name}}">
+            <image mode="aspectFill" src="{{item.topic_img.url}}"></image>
+          </view>
+          <view wx:else class="theme-item" bindtap="onThemesItemTap" data-id="{{item.id}}"  data-name="{{item.name}}" data-id="{{item.id}}" data-name="{{item.name}}">
+            <image mode="aspectFill" src="{{item.topic_img.url}}"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class='home-main-articles'>
+      <view class="home-main-header">最近文章</view>
+      <template is="articles" data="{{articlesArr:articlesArr}}" />
+    </view>
+  </view>
+
+
+</view>
